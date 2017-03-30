@@ -1,6 +1,7 @@
 .PHONY: \
 	default \
-	run-tests
+	run-tests \
+	run-unit-tests
 
 default: run-tests
 
@@ -11,5 +12,5 @@ vendor: composer.lock
 	composer install
 	touch "$@"
 
-run-tests: vendor
+run-tests run-unit-tests: vendor
 	vendor/bin/phpunit --bootstrap vendor/autoload.php test
